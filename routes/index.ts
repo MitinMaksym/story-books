@@ -1,11 +1,12 @@
 import { Request, Response, Router } from "express";
+import { ensureAuth, ensureGuest } from "../middleware/auth";
 
 const router = Router()
 
-router.get("/", (req:Request,res:Response) => {
+router.get("/", ensureGuest, (req:Request,res:Response) => {
     res.render("login",{layout:"login"})
 })
-router.get("/dashboard", (req:Request,res:Response) => {
+router.get("/dashboard", ensureAuth, (req:Request,res:Response) => {
     res.render("dashboard")
 })
 

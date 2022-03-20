@@ -1,10 +1,12 @@
-import app from './app'
-import dotenv from 'dotenv'
-import connectMongoDB from './core/db'
 
-dotenv.config({path:`${__dirname}/config.env`})
+import dotenv from 'dotenv'
+import app from './app'
+import connectMongoDB from './core/db'
+dotenv.config()
+
 
 const port = process.env.PORT || 8080
+
 connectMongoDB()
 
 app.listen(port,() => {
